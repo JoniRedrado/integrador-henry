@@ -1,13 +1,52 @@
 import './App.css';
 import Cards from './components/Cards/Cards.jsx';
-import SearchBar from './components/SearchBar/SearchBar.jsx';
-import characters from './data.js';
+import Nav from './components/Nav/Nav.jsx';
+import { useState } from 'react';
+import axios from 'axios';
 
 function App() {
+   
+   const [ characters, setCharacters ] = useState([])
+
+   const onSearch = (id) => {
+      var repeated = false
+
+      characters.forEach( (char) => {
+         const parsedId = parseInt(id)
+         if(char.id === parsedId){
+            repeated = true
+            return(alert('Ese personaje ya esta ingresado!'))
+         }
+      })
+
+      if (!repeated) {
+         
+         axios(`https://rickandmortyapi.com/api/character/${id}`)
+         .then( (data) => {
+            if (data.data.name) {
+               setCharacters( (oldChars) => [...oldChars, data.data])
+            } else {
+               window.alert('¡No hay personajes con este ID!')
+            }
+         })
+      }
+   }
+
+   const onClose = (id) => {
+      const parsedId = parseInt(id)
+      const newCharacters = characters.filter(character => character.id !== parsedId)
+      setCharacters(newCharacters)
+   }
+
+   const getRandomCharacter = () => {
+      const randomId = Math.ceil(Math.random()*826)
+      onSearch(randomId)
+   }
+
    return (
       <div className='App'>
-         <SearchBar onSearch={(characterID) => window.alert(characterID)} />
-         <Cards characters={characters} />
+         <Nav onSearch={onSearch} randomCharacter={getRandomCharacter}/>
+         <Cards characters={characters} onSearch={onSearch} onClose={onClose} />
       </div>
    );
 }
