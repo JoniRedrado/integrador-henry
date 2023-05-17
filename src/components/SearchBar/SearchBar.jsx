@@ -9,10 +9,15 @@ export default function SearchBar(props) {
       setId(e.target.value)
    }
 
+   const fn = () => {
+      props.onSearch(id)
+      setId("")
+   }
+
    return (
       <div className={styles.searchBar}>
-         <input type='search' onChange={handleChange} value={id}/>
-         <button onClick={()=> props.onSearch(id)}>Agregar</button>
+         <input id='input-id' type='search' onChange={handleChange} value={id}/>
+         <button onClick={fn}>Agregar</button>
       </div>
    );
 }
