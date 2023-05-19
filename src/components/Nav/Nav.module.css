@@ -1,7 +1,7 @@
 .nav__container{
   display: flex;
   flex-direction: row;
-  background-color: rgba(0, 0, 0, 0.808);
+  background-color: var(--blue);
   align-items: center;
   justify-content: space-between;
   padding: 5px 20px;
@@ -14,18 +14,24 @@
 }
 
 .link{
-  background-color: white;
-  color: black;
+  background-color: var(--dark-green);
+  color: white;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  border: solid 2px var(--lime);
   min-width: 10%;
   height: 2.5rem;
   font-size: 1.3rem;
   border-radius: 10px;
   cursor: pointer;
   padding: 0 10px;
+}
+
+.link:hover{
+  background-color: var(--light-green);
+  border: solid 2px var(--lime);
+  color: black;
 }
 

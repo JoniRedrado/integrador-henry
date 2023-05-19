@@ -4,10 +4,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid red;
+  border: 2px solid var(--lime);
   padding: 15px;
   margin: 10px;
-  background-color: #000000d5;
+  background-color: #042940e7;
   color: white;
   border-radius: 15px;
   position: relative;
@@ -41,15 +41,16 @@
   text-decoration: none;
   font-size: 1.5rem;
   margin-top: -2.5rem;
-  background-color: #0000009f;
+  background-color: #042940e7;
   padding: 0 15px;
   border-radius: 15px;
+  border: solid 2px var(--lime);
 }
 
 .link:hover{
-  background-color: white;
+  background-color: var(--cream);
   color: black;
-  border: solid 2px red;
+  border: solid 2px var(--blue);
 }
 
 .card p{

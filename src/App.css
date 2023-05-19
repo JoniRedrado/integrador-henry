@@ -1,3 +1,11 @@
+:root{
+   --blue: #042940;
+   --dark-green: #005C53;
+   --light-green : #9FC131;
+   --lime: #DBF227;
+   --cream: #D6D58E;
+} 
+
 .App {
    margin: 0 auto;
    background-image: url('./assets/bg3.png');

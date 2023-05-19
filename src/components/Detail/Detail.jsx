@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
+import styles from './Detail.module.css'
+
 const Detail = () => {
 
   const [ character, setCharacter ] = useState({});
@@ -22,6 +24,7 @@ const Detail = () => {
         }
       )
       isLoading = false
+      console.log(character);
       return setCharacter({})
   }, [id]);
 
@@ -30,14 +33,18 @@ const Detail = () => {
   }
 
   return (
-    <div >
+    <>
+    {character.origin ? <div className={styles.detail__container}>
       <img src={character.image} alt={character.name} />
-      <h2>{character.name}</h2>
-      <h2>{character.status}</h2>
-      <h2>{character.species}</h2>
-      <h2>{character.gender}</h2>
-      {character.origin ? <h2>{character.location.name}</h2>:<h2>Loading</h2>}
-    </div>
+      <div className={styles.text}>
+        <h2>{character.name}</h2>
+        <h2>{character.status}</h2>
+        <h2>{character.species}</h2>
+        <h2>{character.gender}</h2>
+        <h2>{character.location.name}</h2>
+      </div>
+    </div> : <h2>Loading</h2>}
+    </>
   )
 }
 
