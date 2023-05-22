@@ -10,7 +10,7 @@ const Nav = (props) => {
   return (
     <nav className={styles.nav__container}>
       <img src={logo} className={styles.img} alt='logo'/>
-      <Link to={'/'} className={styles.link}>
+      <Link to={'/home'} className={styles.link}>
         Home
       </Link>
       <Link to={'/about'} className={styles.link}>
@@ -19,6 +19,7 @@ const Nav = (props) => {
       {/* El boton de RandomCharacter hay que moverlo al componente CARDS! */}
       <p onClick={props.randomCharacter} className={styles.link}>Get random character!</p>
       <SearchBar onSearch={props.onSearch} />
+      <button onClick={props.logout}>LOGOUT</button>
     </nav>
   )
 }

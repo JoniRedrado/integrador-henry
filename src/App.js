@@ -3,12 +3,37 @@ import Cards from './components/Cards/Cards.jsx';
 import Nav from './components/Nav/Nav.jsx';
 import About from './components/About/About';
 import ErrorComponent from './components/Error/ErrorComponent';
-import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Detail from './components/Detail/Detail';
+import Form from './components/Form/Form';
 
 function App() {
+
+   const [ access, setAccess ] = useState(false)
+   let EMAIL = "login@henry.com";
+   let PASSWORD = "password1";
+
+   const navigate = useNavigate()
+   
+   const login = (userData) => {
+      if (userData.email === EMAIL && userData.password === PASSWORD) {
+         setAccess(true)
+         navigate("/home")
+      } else {
+         alert("Datos incorrectos!")
+      }
+   }
+
+   const logout = () => {
+      setAccess(false)
+      navigate("/")
+   }
+
+   useEffect(() => {
+      !access && navigate("/")
+   }, [access]);
    
    const [ characters, setCharacters ] = useState([])
 
@@ -45,12 +70,15 @@ function App() {
       const randomId = Math.ceil(Math.random()*826)
       onSearch(randomId)
    }
+   const location = useLocation()
+   console.log(location.pathname);
 
    return (
       <div className='App'>
-         <Nav onSearch={onSearch} randomCharacter={getRandomCharacter}/>
-         <Routes >
-            <Route path='/' element={<Cards characters={characters} onSearch={onSearch} onClose={onClose}/>}/>
+         { location.pathname !== "/" ? <Nav onSearch={onSearch} randomCharacter={getRandomCharacter} logout={logout} /> : <h2>Inicie sesión para continuar</h2>}
+         <Routes>
+            <Route path="/" element={<Form login={login} />} />
+            <Route path='/home' element={<Cards characters={characters} onSearch={onSearch} onClose={onClose}/>}/>
             <Route path='/about' element={<About />}/>
             <Route path='/detail/:id' element={<Detail />}/>
          </Routes>
