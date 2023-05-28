@@ -1,0 +1,33 @@
+.login{
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 70vh;
+  margin: auto;
+  border: solid 2px red;
+}
+
+.login__title {
+  font-size: 2rem;
+  margin: 15px;
+}
+
+.form__container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.form__container span {
+  font-size: 1.5rem;
+}
+
+.form__container form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+

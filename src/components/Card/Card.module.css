@@ -18,11 +18,11 @@
   max-width: 100%;
 }
 
-.card button {
+.fav {
   width: 2.5rem;
   height: 2.5rem;
-  background-color: red;
-  border: solid 2px red;
+  background-color: green;
+  border: solid 2px green;
   border-radius: 100%;
   cursor: pointer;
   position: absolute;
@@ -31,7 +31,25 @@
   margin: 20px;
 }
 
-.card button:hover{
+.fav:hover{
+  cursor: pointer;
+  background-color: white;
+}
+
+.remove {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: red;
+  border: solid 2px red;
+  border-radius: 100%;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 20px;
+}
+
+.remove:hover{
   cursor: pointer;
   background-color: white;
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 import SearchBar from '../SearchBar/SearchBar.jsx'
 
 import styles from './Nav.module.css'
@@ -16,10 +17,13 @@ const Nav = (props) => {
       <Link to={'/about'} className={styles.link}>
         About
       </Link>
+      <Link to={'/favorites'} className={styles.link}>
+        Favorites
+      </Link>
       {/* El boton de RandomCharacter hay que moverlo al componente CARDS! */}
       <p onClick={props.randomCharacter} className={styles.link}>Get random character!</p>
       <SearchBar onSearch={props.onSearch} />
-      <button onClick={props.logout}>LOGOUT</button>
+      <button className={styles.link} onClick={props.logout}>LOGOUT</button>
     </nav>
   )
 }
