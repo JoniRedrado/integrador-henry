@@ -23,18 +23,23 @@ function App() {
 
    //LOGIN
    const [ access, setAccess ] = useState(false)
-   let EMAIL = "login@henry.com";
-   let PASSWORD = "password1";
 
    const navigate = useNavigate()
    
    const login = (userData) => {
-      if (userData.email === EMAIL && userData.password === PASSWORD) {
+      /*if (userData.email === EMAIL && userData.password === PASSWORD) {
          setAccess(true)
          navigate("/home")
       } else {
          alert("Datos incorrectos!")
-      }
+      }*/
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+         const { access } = data;
+         setAccess(data);
+         access && navigate('/home');
+      });
    }
 
    //LOGOUT
@@ -64,7 +69,7 @@ function App() {
       })
 
       if (!repeated) {
-         axios(`https://rickandmortyapi.com/api/character/${id}`)
+         axios(`http://localhost:3001/rickandmorty/character/${id}`)
          .then( (data) => {
             if (data.data.name) {
                setCharacters( (oldChars) => [...oldChars, data.data])
