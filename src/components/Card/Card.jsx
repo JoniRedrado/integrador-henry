@@ -7,6 +7,8 @@ import styles from './Card.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { ADD_FAV, REMOVE_FAV } from '../../redux/actions';
 
+import axios from 'axios'
+
 export default function Card(props) {
    //PROPS
    const { id, name, status, species, gender, origin, image, character, onClose} = props
@@ -22,7 +24,17 @@ export default function Card(props) {
          setIsFav(false)
          dispatch({type: REMOVE_FAV, payload: id})
       } else {
+         console.log(character);
          setIsFav(true)
+
+         axios.post('http://localhost:3001/rickandmorty/fav', character)
+            .then(res=>{
+               console.log(res.data);
+            })
+            .catch(error=>{
+               console.error(error);
+            })
+
          dispatch({type: ADD_FAV, payload: character})
       }
    }

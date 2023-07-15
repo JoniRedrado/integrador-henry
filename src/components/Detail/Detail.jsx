@@ -17,6 +17,7 @@ const Detail = () => {
       .then(
         ({ data }) => {
           if (data.name) {
+            console.log(data);
             setCharacter(data)
           } else {
             window.alert("No hay personajes con ese ID")
@@ -41,7 +42,6 @@ const Detail = () => {
         <h2>{character.status}</h2>
         <h2>{character.species}</h2>
         <h2>{character.gender}</h2>
-        <h2>{character.location.name}</h2>
       </div>
     </div> : <h2>Loading</h2>}
     </>

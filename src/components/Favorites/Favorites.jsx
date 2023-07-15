@@ -12,8 +12,8 @@ const Favorites = (props) => {
 
   const [aux, setAux] = useState(false)
 
-  const allCharacters = useSelector(state=>state.allCharacters)
   const myFavorites = useSelector(state=>state.myFavorites)
+
   const dispatch = useDispatch()
 
   useEffect(()=>{
@@ -46,6 +46,7 @@ const Favorites = (props) => {
         <option value="Genderless">Genderless</option>
         <option value="unknown">unknown</option>
       </select>
+      
       <div className={styles.cards__container}>
         {myFavorites.map((fav)=>{
           return <Card 

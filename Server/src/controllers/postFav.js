@@ -13,6 +13,7 @@ const postFav = async (req,res) => {
     })
     
     const favorites = await Favorite.findAll()
+    console.log("post");
     res.status(200).json(favorites)
 
   } catch (error) {
