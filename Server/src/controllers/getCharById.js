@@ -4,7 +4,8 @@ const axios = require("axios")
 const getCharById = (req, res)=>{
 
   const { id } = req.params
-  
+
+  console.log(req.params);
   axios(`${URL}/${id}`)
     .then(({data})=>{
       const {id, status, name, species, origin, image, gender} = data
